@@ -1,0 +1,113 @@
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .logoContainer {
+    flex: 1;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #e50914;
+    text-decoration: none;
+    text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .logo:hover {
+    color: #f40612;
+    text-shadow: 0 0 15px rgba(229, 9, 20, 0.7);
+  }
+  
+  .navLinks {
+    display: flex;
+    gap: 20px;
+    flex: 2;
+    justify-content: center;
+  }
+  
+  .navLink {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  .navLink:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .searchContainer {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .searchInput {
+    padding: 10px 15px;
+    padding-right: 40px;
+    width: 250px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .searchInput:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 280px;
+  }
+  
+  .searchButton {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      padding: 15px;
+    }
+    
+    .navLinks {
+      margin: 15px 0;
+      width: 100%;
+    }
+    
+    .searchContainer {
+      width: 100%;
+    }
+    
+    .searchInput {
+      width: 100%;
+    }
+  }

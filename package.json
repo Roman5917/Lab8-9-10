@@ -1,0 +1,18 @@
+{
+  "name": "lab8-9-10",
+  "version": "1.0.0",
+  "main": "index.js",
+ "scripts": {
+  "start": "concurrently \"npm run server\" \"npm run react\"",
+  "react": "npm run start --prefix lab8-9-10",
+  "server": "npm run start --prefix server"
+},
+
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

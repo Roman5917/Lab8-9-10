@@ -50,59 +50,51 @@ const Booking = () => {
     });
   };
 
-  const handleBookingSubmit = () => {
-    if (!userData.name || !userData.email || !userData.phone) {
-      alert("Будь ласка, заповніть всі поля!");
-      return;
-    }
+  const handleBookingSubmit = async () => {
+  if (!userData.name || !userData.email || !userData.phone) {
+    alert("Будь ласка, заповніть всі поля!");
+    return;
+  }
 
-    if (selectedSeats.length === 0) {
-      alert("Будь ласка, виберіть хоча б одне місце!");
-      return;
-    }
+  if (selectedSeats.length === 0) {
+    alert("Будь ласка, виберіть хоча б одне місце!");
+    return;
+  }
 
-    // Об'єкт для броні
-    const bookingData = {
-      id: Date.now().toString(),
-      movieId: id,
-      movieTitle: movie.title,
-      date: new Date().toISOString(),
-      seats: selectedSeats,
-      totalPrice: selectedSeats.length * 150,
-      customer: userData
-    };
+  const bookingData = {
+    id: Date.now().toString(),
+    movieId: id,
+    movieTitle: movie.title,
+    date: new Date().toISOString(),
+    seats: selectedSeats,
+    totalPrice: selectedSeats.length * 150,
+    customer: userData
+  };
 
-    
-    //сейв для всіх брон.
-    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
-    bookings.push(bookingData);
-    localStorage.setItem('bookings', JSON.stringify(bookings));
+  try {
+    await fetch("http://localhost:5000/api/bookings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(bookingData)
+    });
 
-   
     const updatedBookedSeats = [...bookedSeats, ...selectedSeats];
     localStorage.setItem(`bookedSeats_${id}`, JSON.stringify(updatedBookedSeats));
     setBookedSeats(updatedBookedSeats);
 
-    // завантаження json
-    const dataStr = JSON.stringify(bookingData, null, 2);
-    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-    
-    
-    const exportFileDefaultName = `booking_${bookingData.id}.json`;
-    const linkElement = document.createElement('a');
-    linkElement.setAttribute('href', dataUri);
-    linkElement.setAttribute('download', exportFileDefaultName);
-    linkElement.click();
-    
-    
     setSelectedSeats([]);
     setBookingComplete(true);
-    
-    // повернення на головну сторінку 
+
     setTimeout(() => {
       navigate('/');
     }, 3000);
-  };
+  } catch (error) {
+    console.error("Помилка під час збереження бронювання:", error);
+    alert("Сталася помилка під час бронювання. Спробуйте пізніше.");
+  }
+};
 
  
   const getSeatStyle = (seatNumber) => {

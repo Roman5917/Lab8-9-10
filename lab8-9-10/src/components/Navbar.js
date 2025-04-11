@@ -29,6 +29,7 @@ const Navbar = ({ onSearch }) => {
         <Link to="/" className={styles.navLink}>Головна</Link>
         <Link to="/upcoming" className={styles.navLink}>Скоро в прокаті</Link>
         <Link to="/about" className={styles.navLink}>Про нас</Link>
+       
       </div>
       
       <div className={styles.searchContainer}>

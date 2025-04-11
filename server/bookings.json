@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1744370162610",
+    "movieId": "2",
+    "movieTitle": "Темний лицар",
+    "date": "2025-04-11T11:16:02.610Z",
+    "seats": [
+      1
+    ],
+    "totalPrice": 150,
+    "customer": {
+      "name": "test1",
+      "email": "test1@gmail.com",
+      "phone": "0507003408"
+    }
+  },
+  {
+    "id": "1744371230209",
+    "movieId": "2",
+    "movieTitle": "Темний лицар",
+    "date": "2025-04-11T11:33:50.209Z",
+    "seats": [
+      2
+    ],
+    "totalPrice": 150,
+    "customer": {
+      "name": "test1",
+      "email": "test1@gmail.com",
+      "phone": "0507003408"
+    }
+  }
+]
